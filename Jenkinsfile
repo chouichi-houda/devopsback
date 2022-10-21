@@ -5,8 +5,8 @@ pipeline {
              steps{ sh 'git clone https://github.com/chouichi-houda/devopsback.git'
              }
         } 
-        stage('Build'){
-             steps{ sh 'mvn -B -DskipTests clean package'
+        stage('Package'){
+             steps{ sh 'mvn clean package'
              }
         }     
     }
