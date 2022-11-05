@@ -1,7 +1,4 @@
-FROM maven:3.8.2-jdk-8
-
-WORKDIR /spring-app
-COPY . .
-RUN mvn clean install
-
-CMD mvn spring-boot:run
+FROM openjdk:11-jdk-alpine
+EXPOSE 8082
+ADD target/tpAchatProject-1.0 tpAchatProject-1.0
+ENTRYPOINT ["java","-jar","/tpAchatProject-1.0"]
