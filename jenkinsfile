@@ -1,0 +1,24 @@
+pipeline {
+	    agent any
+	    stages{
+	        stage('Clone'){
+	             steps{  
+	                 git branch: 'rahma', url: 'https://github.com/chouichi-houda/devopsback.git'
+	             }
+	        }  
+	       stage('MVN CLEAN') {
+	            steps {
+	                sh 'mvn clean'
+	                 
+	            }
+	        }
+	        stage('MVN COMPILE') {
+	            steps {
+	                   sh 'mvn compile -e'
+	                 
+	            }
+	        }
+	       
+	    }
+	}
+
