@@ -6,8 +6,8 @@ pipeline {
                  sh 'git clone https://github.com/chouichi-houda/devopsback.git'
              }
         }  
-        stage("Build") { sh 'rm -rf *'
-             steps {
+        stage("Build") {
+             steps { sh 'rm -rf *'
              sh 'mvn compile'
             }
         }
