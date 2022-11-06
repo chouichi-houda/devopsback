@@ -8,7 +8,7 @@ pipeline {
         }  
         stage("Build") {
              steps { sh 'rm -rf *'
-             sh 'mvn compile''
+             sh 'mvn --batch-mode compile'
             }
         }
     }
