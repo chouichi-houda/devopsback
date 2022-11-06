@@ -8,7 +8,7 @@ pipeline {
         }  
         stage("Build") {
              steps { sh 'rm -rf *'
-                    sh '${mvnHome}/bin/mvn compile'
+                    sh 'mvn compile'
             }
         }
     }
