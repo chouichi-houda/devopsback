@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Clone'){
              steps{  
-                 git branch: 'samar', url: 'https://github.com/chouichi-houda/devopsback.git'
+                 git branch: 'chaima', url: 'https://github.com/chouichi-houda/devopsback.git'
              }
         }  
        stage('MVN CLEAN') {
