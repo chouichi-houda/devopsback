@@ -8,13 +8,13 @@ pipeline {
         }  
        stage('MVN CLEAN') {
             steps {
-                sh 'mvn -f path/to/pom.xml clean'
+                sh 'mvn clean -DskipTests'
                  
             }
         }
         stage('MVN COMPILE') {
             steps {
-                sh 'mvn -f path/to/pom.xml compile'
+                   sh 'mvn compile -DskipTests'
                  
             }
         }
