@@ -6,22 +6,11 @@ pipeline {
                  sh 'git clone https://github.com/chouichi-houda/devopsback.git'
              }
         }  
-        stage('Clean'){
-            steps {
-                sh 'mvn clean '
-            }
-            
-        }
         stage('Compile'){
             steps {
-                sh 'mvn compile -DskipTests'
+                sh 'mvn compile -e'
             }
             
-        }
-         stage('UNIT test'){
-            steps{
-                sh 'mvn test'
-            }
         }
     }
 }
