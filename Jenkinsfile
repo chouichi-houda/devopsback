@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Clone'){
              steps{ 
-                 git branch: 'amal', url:'git clone https://github.com/chouichi-houda/devopsback.git'
+                 git branch: 'amal', url:'https://github.com/chouichi-houda/devopsback.git'
              }
         }
 
