@@ -60,7 +60,7 @@ public class FactureServiceImpl implements IFactureService {
 		
 		for (DetailFacture detail : detailsFacture) {
 			//Récuperer le produit 
-			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
+			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).orElse(null);
 			if(produit != null) {
 			//Calculer le montant total pour chaque détail Facture
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
@@ -103,16 +103,20 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
+		assert (fournisseur!=null);
 		return (List<Facture>) fournisseur.getFactures();
+
 	}
 
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture facture = factureRepository.findById(idFacture).orElse(null);
 		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
+		if(operateur != null) {
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);
 	}
+		}
 
 	@Override
 	public float pourcentageRecouvrement(Date startDate, Date endDate) {
