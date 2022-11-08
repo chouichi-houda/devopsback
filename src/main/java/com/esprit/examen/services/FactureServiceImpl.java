@@ -73,8 +73,9 @@ public class FactureServiceImpl implements IFactureService {
 			//Calculer le montant remise pour la facture
 			montantRemise = montantRemise + montantRemiseDetail;
 			detailFactureRepository.save(detail);
+			}
 		}
-		}
+		
 		f.setMontantFacture(montantFacture);
 		f.setMontantRemise(montantRemise);
 		return f;
