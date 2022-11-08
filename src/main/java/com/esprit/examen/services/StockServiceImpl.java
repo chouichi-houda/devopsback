@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class StockServiceImpl implements IStockService {
+
 	@Autowired
 	StockRepository stockRepository;
 
@@ -39,13 +40,10 @@ public class StockServiceImpl implements IStockService {
 	}
 
 	@Override
-	public int deleteStock(Long stockId) {
+	public void deleteStock(Long stockId) {
 		log.info("In method deleteStock");
 		stockRepository.deleteById(stockId);
-		if(stockRepository.findById(stockId)==null){
-			return 1;
-		}
-		return 0;
+
 	}
 
 	@Override
@@ -75,7 +73,7 @@ public class StockServiceImpl implements IStockService {
 		String newLine = System.getProperty("line.separator");
 		List<Stock> stocksEnRouge =  stockRepository.retrieveStatusStock();
 		for (int i = 0; i < stocksEnRouge.size(); i++) {
-			  finalMessage = newLine + finalMessage + msgDate + newLine + ": le stock "
+			finalMessage = newLine + finalMessage + msgDate + newLine + ": le stock "
 					+ stocksEnRouge.get(i).getLibelleStock() + " a une quantité de " + stocksEnRouge.get(i).getQte()
 					+ " inférieur à la quantité minimale a ne pas dépasser de " + stocksEnRouge.get(i).getQteMin()
 					+ newLine;
