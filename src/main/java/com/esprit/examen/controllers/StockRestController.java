@@ -40,8 +40,8 @@ public class StockRestController {
 	@PostMapping("/add-stock")
 	@ResponseBody
 	public Stock addStock(@RequestBody Stock s) {
-		Stock stock = new Stock(s.getLibelleStock(),s.getQte(),s.getQteMin());
-		return stockService.addStock(stock);
+		Stock stock = stockService.addStock(s);
+		return stock;
 	}
 
 	// http://localhost:8089/SpringMVC/stock/remove-stock/{stock-id}
@@ -55,8 +55,7 @@ public class StockRestController {
 	@PutMapping("/modify-stock")
 	@ResponseBody
 	public Stock modifyStock(@RequestBody Stock stock) {
-		Stock stock = new Stock(s.getIdStock(),s.getLibelleStock(),s.getQte(),s.getQteMin(),s.getProduits());
-		return stockService.updateStock(stock);
+			return stockService.updateStock(stock);
 	}
 
 	/*
