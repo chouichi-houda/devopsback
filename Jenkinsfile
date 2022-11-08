@@ -2,9 +2,42 @@ pipeline {
     agent any
     stages{
         stage('Clone'){
-             steps{  sh 'rm -rf *'
-                 sh 'git clone https://github.com/chouichi-houda/devopsback.git'
+             steps{  
+                 git branch: 'houda', url: 'https://github.com/chouichi-houda/devopsback.git'
              }
-        }     
+        }  
+       stage('MVN CLEAN') {
+            steps {
+                sh 'mvn clean'
+                 
+            }
+        }
+        stage('MVN COMPILE') {
+            steps {
+                   sh 'mvn compile -e'
+                 
+            }
+        }
+       stage("Unit tests") {
+steps {
+sh "mvn test"
+}}
+
+stage('MVN SONARQUBE') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                 
+            }
+        }
     }
 }
+
+    
+    
+     
+             
+                 
+             
+
+    
+
