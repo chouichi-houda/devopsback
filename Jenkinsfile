@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage('Clone'){
              steps{  sh 'rm -rf *'
-                 sh 'git clone https://github.com/chouichi-houda/devopsback.git'
+                 sh branch: 'amal', url:'git clone https://github.com/chouichi-houda/devopsback.git'
              }
         }
 
