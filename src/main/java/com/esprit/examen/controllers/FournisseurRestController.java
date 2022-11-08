@@ -44,8 +44,7 @@ public class FournisseurRestController {
 	@PostMapping("/add-fournisseur")
 	@ResponseBody
 	public Fournisseur addFournisseur(@RequestBody Fournisseur f) {
-		Fournisseur fournisseur = fournisseurService.addFournisseur(f);
-		return fournisseur;
+		return fournisseurService.addFournisseur(f);
 	}
 
 	// http://localhost:8089/SpringMVC/fournisseur/remove-fournisseur/{fournisseur-id}
