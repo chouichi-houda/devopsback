@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.esprit.examen.dto.DTOStock;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.services.IStockService;
 
@@ -39,12 +40,11 @@ public class StockRestController {
 	// http://localhost:8089/SpringMVC/stock/add-stock
 	@PostMapping("/add-stock")
 	@ResponseBody
-	public Stock addStock(@RequestBody Stock ss) {
-		Stock stock = stockService.addStock(ss);
-		return stock;
+	public Stock addStock(@RequestBody DTOStock s) {
+		Stock stock = new Stock(s.getLibelleStock(),s.getQte(),s.getQteMin());
+		return stockService.addStock(stock);
+
 	}
-
-
 	@DeleteMapping("/remove-stock/{stock-id}")
 	@ResponseBody
 	public void removeStock(@PathVariable("stock-id") Long stockId) {
