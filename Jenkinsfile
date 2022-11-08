@@ -5,6 +5,24 @@ pipeline {
              steps{  sh 'rm -rf *'
                  sh 'git clone https://github.com/chouichi-houda/devopsback.git'
              }
+        }
+
+        stage('MVN CLEAN') {
+             steps{
+                 sh 'mvn clean'   
+             }
+        }
+
+        stage('MVN COMPILE') {
+            steps{
+                 sh 'mvn compile -e'   
+             }
+        }
+
+         stage('Mvn Junit') {
+            steps{
+                 echo 'MVN test'  
+            }
         }     
     }
 }
