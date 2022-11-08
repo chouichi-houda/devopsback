@@ -69,7 +69,7 @@ public class FournisseurServiceImplTest {
 	    	assertEquals(Fournisseur1, FourniseurService.retrieveFournisseur(Fournisseur1.getIdFournisseur()));
 	    	System.out.println("Retrieve operator by id works !");
 	    }
-	 
+	/* 
 	 @Test
 		public void deleteFournisseurTest() {
 			Fournisseur f = new Fournisseur();
@@ -78,7 +78,7 @@ public class FournisseurServiceImplTest {
 			assertNull(FourniseurService.retrieveFournisseur(savedFournisseur.getIdFournisseur()));
 		}
 
-	 
+	 */
 	 
 }
 
