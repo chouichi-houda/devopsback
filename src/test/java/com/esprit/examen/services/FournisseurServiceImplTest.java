@@ -2,6 +2,7 @@ package com.esprit.examen.services;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -68,6 +69,15 @@ public class FournisseurServiceImplTest {
 	    	assertEquals(Fournisseur1, FourniseurService.retrieveFournisseur(Fournisseur1.getIdFournisseur()));
 	    	System.out.println("Retrieve operator by id works !");
 	    }
+	 
+	 @Test
+		public void deleteFournisseurTest() {
+			Fournisseur f = new Fournisseur();
+			Fournisseur savedFournisseur= FourniseurService.addFournisseur(f);
+			FourniseurService.deleteFournisseur(savedFournisseur.getIdFournisseur());
+			assertNull(FourniseurService.retrieveFournisseur(savedFournisseur.getIdFournisseur()));
+		}
+
 	 
 	 
 }
