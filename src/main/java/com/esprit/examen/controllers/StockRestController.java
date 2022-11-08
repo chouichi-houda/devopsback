@@ -71,6 +71,5 @@ public class StockRestController {
 	//@GetMapping("/retrieveStatusStock")
 //	@ResponseBody
 
-//	}
 
 }
