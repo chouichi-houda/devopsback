@@ -53,8 +53,8 @@ public class ProduitRestController {
 	// http://localhost:8089/SpringMVC/produit/add-produit/{idCategorieProduit}/{idStock}
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public ProduitDto addProduit(@RequestBody Produit p) {
-		Produit produit = produitService.addProduit(p);
+	public ProduitDto addProduit(@RequestBody ProduitDto p) {
+		Produit produit = produitService.addProduit(produitConverter.convertDtoToEntity(p));
 		return produitConverter.convertEntityToDto(produit);
 	}
 
