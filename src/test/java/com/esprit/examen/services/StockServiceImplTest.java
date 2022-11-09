@@ -41,24 +41,7 @@ public class StockServiceImplTest {
 		}
 	};
 
-	@Test
-	public void testRetrieveStock() {
-
-		Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
-		Stock stock1 = stockService.retrieveStock(Long.valueOf(1));
-		Assertions.assertNotNull(stock1);
-		System.out.println("Retrieved !");
-	}
-
-	@Test
-	public void testAddStock() {
-
-		Mockito.when(stockRepository.save(stock)).thenReturn(stock);
-		Stock stock1 = stockService.addStock(stock);
-		Assertions.assertNotNull(stock1);
-		System.out.println("added !");
-	}
-
+	
 	@Test
 	public void TestretrieveAllStocks() {
 
@@ -67,7 +50,16 @@ public class StockServiceImplTest {
 		assertEquals(2, list.size());
 		System.out.println("Retrieve all");
 	}
+	
+	@Test
+	public void testAddStock() {
 
+		Mockito.when(stockRepository.save(stock)).thenReturn(stock);
+		Stock stock1 = stockService.addStock(stock);
+		Assertions.assertNotNull(stock1);
+		System.out.println("added !");
+	}
+	
 	@Test
 	public void testdeleteStock() {
 		Stock stock1 = new Stock(Long.valueOf(4), "f5", 50, 15, null);
@@ -75,7 +67,7 @@ public class StockServiceImplTest {
 		Mockito.verify(stockRepository).deleteById(stock1.getIdStock());
 		System.out.println("deleted");
 	}
-
+	
 	@Test
 	public void testUpdateStock() {
 		stock.setLibelleStock("libelleUpdated");
@@ -84,5 +76,15 @@ public class StockServiceImplTest {
 		Assertions.assertEquals(stock.getLibelleStock(), stock1.getLibelleStock());
 		System.out.println(stock1);
 	}
+	
+	@Test
+	public void testRetrieveStock() {
+
+		Mockito.when(stockRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(stock));
+		Stock stock1 = stockService.retrieveStock(Long.valueOf(1));
+		Assertions.assertNotNull(stock1);
+		System.out.println("Retrieved !");
+	}
+	
 
 }
