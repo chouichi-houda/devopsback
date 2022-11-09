@@ -19,8 +19,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.esprit.examen.TpAchatProjectApplication;
 import com.esprit.examen.entities.Fournisseur;
 import com.esprit.examen.repositories.FournisseurRepository;
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = TpAchatProjectApplication.class)
+
+import lombok.extern.slf4j.Slf4j;
+@SpringBootTest
+@Slf4j
 public class FournisseurServiceImplTest {
 
 	
