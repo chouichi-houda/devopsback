@@ -25,9 +25,9 @@ pipeline {
             }
         }
         stage(' SONARQUBE') {
-            steps {
+            steps {withSonarQubeEnv ( installationName: 'test'){
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
-                 
+            }  
             }
         }
     }
