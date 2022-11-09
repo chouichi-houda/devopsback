@@ -14,20 +14,16 @@ pipeline {
         }
         stage('MVN COMPILE') {
             steps {
-                   sh 'mvn compile -e'
+                   sh 'mvn compile'
                  
             }
         }
        stage("Unit tests") {
-steps {
-sh "mvn test"
-}}
-
-
-            
-               
-            
-            
+           steps {
+                   sh 'mvn test'
+             }
+             
+        }
 
     }
 }
