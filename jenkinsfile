@@ -18,9 +18,9 @@ pipeline {
 	                 
 	            }
 	        }
-		stage("Unit tests") {
+		stage('Unit tests') {
                     steps {
-                           sh "mvn test"
+                           sh 'mvn test'
                     }
 		}
 		stage('MVN SONARQUBE') {
