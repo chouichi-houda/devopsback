@@ -1,9 +1,12 @@
 package com.esprit.examen.services;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import javax.transaction.Transactional;
+
+import org.hibernate.validator.internal.util.privilegedactions.IsClassPresent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.esprit.examen.entities.DetailFacture;
@@ -60,6 +63,7 @@ public class FactureServiceImpl implements IFactureService {
 		for (DetailFacture detail : detailsFacture) {
 			//Récuperer le produit 
 			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
+			if(produit != null) {
 			//Calculer le montant total pour chaque détail Facture
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
 			//Calculer le montant remise pour chaque détail Facture
@@ -72,6 +76,7 @@ public class FactureServiceImpl implements IFactureService {
 			//Calculer le montant remise pour la facture
 			montantRemise = montantRemise + montantRemiseDetail;
 			detailFactureRepository.save(detail);
+			}
 		}
 		f.setMontantFacture(montantFacture);
 		f.setMontantRemise(montantRemise);
@@ -100,15 +105,23 @@ public class FactureServiceImpl implements IFactureService {
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
 		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
-		return (List<Facture>) fournisseur.getFactures();
+		List<Facture> Lfacture= new ArrayList<Facture>();
+		if(fournisseur!=null) {
+			Lfacture.addAll(fournisseur.getFactures());
+		}else {
+			Lfacture.add(null);
+		}
+		return Lfacture;
 	}
 
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
 		Facture facture = factureRepository.findById(idFacture).orElse(null);
 		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
+		if(operateur !=null) {
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);
+		}
 	}
 
 	@Override
