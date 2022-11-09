@@ -1,10 +1,21 @@
 package com.esprit.examen.controllers;
 
-import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.esprit.examen.converter.ProduitConverter;
+import com.esprit.examen.dto.ProduitDto;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.services.IProduitService;
 
@@ -19,29 +30,32 @@ public class ProduitRestController {
 
 	@Autowired
 	IProduitService produitService;
+	
+	@Autowired
+    ProduitConverter produitConverter;
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
-	public List<Produit> getProduits() {
+	public List<ProduitDto> getProduits() {
 		List<Produit> list = produitService.retrieveAllProduits();
-		return list;
+		return produitConverter.convertEntitiesToDtos(list);
 	}
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-produit/8
 	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
-	public Produit retrieveRayon(@PathVariable("produit-id") Long produitId) {
-		return produitService.retrieveProduit(produitId);
+	public ProduitDto retrieveRayon(@PathVariable("produit-id") Long produitId) {
+		return  produitConverter.convertEntityToDto(produitService.retrieveProduit(produitId));
 	}
 
 	/* Ajouter en produit tout en lui affectant la catégorie produit et le stock associés */
 	// http://localhost:8089/SpringMVC/produit/add-produit/{idCategorieProduit}/{idStock}
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
+	public ProduitDto addProduit(@RequestBody Produit p) {
 		Produit produit = produitService.addProduit(p);
-		return produit;
+		return produitConverter.convertEntityToDto(produit);
 	}
 
 	// http://localhost:8089/SpringMVC/produit/remove-produit/{produit-id}
