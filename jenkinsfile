@@ -32,7 +32,7 @@ pipeline {
 		
 	       stage('Nexus'){
             steps{
-                sh 'mvn clean package deploy'
+                sh 'clean package deploy'
             }
         }
 	    }
