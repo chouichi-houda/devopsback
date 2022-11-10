@@ -6,35 +6,52 @@ pipeline {
 	                 git branch: 'rahma', url: 'https://github.com/chouichi-houda/devopsback.git'
 	             }
 	        }  
-	       stage('MVN CLEAN') {
-	            steps {
-	                sh 'mvn clean'
-	                 
-	            }
-	        }
-	        stage('MVN COMPILE') {
-	            steps {
-	                   sh 'mvn compile -e'
-	                 
-	            }
-	        }
-		stage('Unit tests') {
-                    steps {
-                           sh 'mvn test'
-                    }
-		}
-		stage('MVN SONARQUBE') {
+	       stage('Testing maven') {
             steps {
-                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+                sh """mvn -version"""
                  
             }
         }
-		
-	       stage('Nexus'){
-            steps{
-                sh 'mvn deploy'
+       
+        stage('Mvn Clean') {
+            steps {
+                sh 'mvn clean'
+                 
             }
         }
-	    }
-	}
-
+        stage('Mvn Compile') {
+            steps {
+                sh 'mvn compile'
+                 
+            }
+        }
+        
+        stage('SonarQube analysis 1') {
+            steps {
+                sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+            }
+        }
+        stage('JUnit and Mockito Test'){
+            steps{
+                script
+                {
+                    if (isUnix())
+                    {
+                        sh 'mvn --batch-mode test'
+                    }
+                    else
+                    {
+                        bat 'mvn --batch-mode test'
+                    }
+                }
+            }
+       
+        }
+        stage('NEXUS') {
+            steps {
+                sh 'mvn deploy -DskipTests'
+                  
+            }
+        }
+}
+}
