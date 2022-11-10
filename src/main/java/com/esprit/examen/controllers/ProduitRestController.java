@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.esprit.examen.converter.ProduitConverter;
+import com.esprit.examen.dto.ProduitDto;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.services.IProduitService;
 
@@ -28,6 +30,9 @@ public class ProduitRestController {
 
 	@Autowired
 	IProduitService produitService;
+	
+	@Autowired
+    ProduitConverter produitConverter;
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	@GetMapping("/retrieve-all-produits")
@@ -48,9 +53,9 @@ public class ProduitRestController {
 	// http://localhost:8089/SpringMVC/produit/add-produit/{idCategorieProduit}/{idStock}
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public Produit addProduit(@RequestBody Produit p) {
-		Produit produit = produitService.addProduit(p);
-		return produit;
+	public ProduitDto addProduit(@RequestBody ProduitDto p) {
+		Produit produit = produitService.addProduit(produitConverter.convertDtoToEntity(p));
+		return produitConverter.convertEntityToDto(produit);
 	}
 
 	// http://localhost:8089/SpringMVC/produit/remove-produit/{produit-id}
