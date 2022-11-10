@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.esprit.examen.converter.ProduitConverter;
-import com.esprit.examen.dto.ProduitDto;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.services.IProduitService;
 
@@ -30,32 +28,29 @@ public class ProduitRestController {
 
 	@Autowired
 	IProduitService produitService;
-	
-	@Autowired
-    ProduitConverter produitConverter;
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-all-produits
 	@GetMapping("/retrieve-all-produits")
 	@ResponseBody
-	public List<ProduitDto> getProduits() {
+	public List<Produit> getProduits() {
 		List<Produit> list = produitService.retrieveAllProduits();
-		return produitConverter.convertEntitiesToDtos(list);
+		return list;
 	}
 
 	// http://localhost:8089/SpringMVC/produit/retrieve-produit/8
 	@GetMapping("/retrieve-produit/{produit-id}")
 	@ResponseBody
-	public ProduitDto retrieveRayon(@PathVariable("produit-id") Long produitId) {
-		return  produitConverter.convertEntityToDto(produitService.retrieveProduit(produitId));
+	public Produit retrieveRayon(@PathVariable("produit-id") Long produitId) {
+		return produitService.retrieveProduit(produitId);
 	}
 
 	/* Ajouter en produit tout en lui affectant la catégorie produit et le stock associés */
 	// http://localhost:8089/SpringMVC/produit/add-produit/{idCategorieProduit}/{idStock}
 	@PostMapping("/add-produit")
 	@ResponseBody
-	public ProduitDto addProduit(@RequestBody ProduitDto p) {
-		Produit produit = produitService.addProduit(produitConverter.convertDtoToEntity(p));
-		return produitConverter.convertEntityToDto(produit);
+	public Produit addProduit(@RequestBody Produit p) {
+		Produit produit = produitService.addProduit(p);
+		return produit;
 	}
 
 	// http://localhost:8089/SpringMVC/produit/remove-produit/{produit-id}
@@ -91,7 +86,6 @@ public class ProduitRestController {
 	public float getRevenuBrutProduit(@PathVariable("idProduit") Long idProduit,
 			@PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
 			@PathVariable(name = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate) {
-
 		return produitService.getRevenuBrutProduit(idProduit, startDate, endDate);
 	}*/
 
