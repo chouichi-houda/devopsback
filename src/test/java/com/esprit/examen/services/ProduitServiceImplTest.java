@@ -21,7 +21,7 @@ import com.esprit.examen.entities.Produit;
 import com.esprit.examen.repositories.ProduitRepository;
 //@SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class ProduitServiceImplTest {
+class ProduitServiceImplTest {
 	
 	public ProduitServiceImplTest() {
 		// TODO Auto-generated constructor stub
