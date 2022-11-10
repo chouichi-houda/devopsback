@@ -26,7 +26,7 @@ pipeline {
         }
         stage(' SONARQUBE') {
             steps {withSonarQubeEnv ( installationName: 'test'){
-                sh 'mvn sonar:sonar '
+                sh 'mvn sonar:sonar'
             }  
             }
         }
