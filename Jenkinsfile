@@ -1,5 +1,7 @@
 pipeline {
     agent any
+     environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerHub')
     stages{
         stage('Clone'){
              steps{  
@@ -44,6 +46,12 @@ pipeline {
             steps{
                 sh 'mvn deploy -DskipStaging=true'
             }
+        }
+        
+        stage("Building Docker Image") {
+                steps{
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/achatprojet .'
+                }
         }
 
     }
