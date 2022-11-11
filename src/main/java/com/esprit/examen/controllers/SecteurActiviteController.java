@@ -4,6 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.esprit.examen.converter.ReglementConverter;
+import com.esprit.examen.converter.SecteurActiviteConverter;
+import com.esprit.examen.dto.SecteurActiviteDto;
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.services.ISecteurActiviteService;
 
@@ -17,13 +21,13 @@ public class SecteurActiviteController {
 
 	@Autowired
 	ISecteurActiviteService secteurActiviteService;
-	
+	@Autowired
+    SecteurActiviteConverter secteurActiviteConverter;
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-all-secteurActivite
 	@GetMapping("/retrieve-all-secteurActivite")
 	@ResponseBody
 	public List<SecteurActivite> getSecteurActivite() {
-		List<SecteurActivite> list = secteurActiviteService.retrieveAllSecteurActivite();
-		return list;
+		return secteurActiviteService.retrieveAllSecteurActivite();
 	}
 
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-secteurActivite/8
@@ -36,9 +40,9 @@ public class SecteurActiviteController {
 	// http://localhost:8089/SpringMVC/secteurActivite/add-secteurActivite
 	@PostMapping("/add-secteurActivite")
 	@ResponseBody
-	public SecteurActivite addSecteurActivite(@RequestBody SecteurActivite sa) {
-		SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(sa);
-		return secteurActivite;
+	public SecteurActiviteDto addSecteurActivite(@RequestBody SecteurActiviteDto sa) {
+		SecteurActivite secteurActivite = secteurActiviteService.addSecteurActivite(secteurActiviteConverter.convertDtoToEntity(sa));
+		return secteurActiviteConverter.convertEntityToDto(secteurActivite);
 	}
 
 	// http://localhost:8089/SpringMVC/secteurActivite/remove-secteurActivite/{secteurActivite-id}
@@ -51,8 +55,9 @@ public class SecteurActiviteController {
 	// http://localhost:8089/SpringMVC/secteurActivite/modify-secteurActivite
 	@PutMapping("/modify-secteurActivite")
 	@ResponseBody
-	public SecteurActivite modifySecteurActivite(@RequestBody SecteurActivite secteurActivite) {
-		return secteurActiviteService.updateSecteurActivite(secteurActivite);
+	public SecteurActiviteDto modifySecteurActivite(@RequestBody SecteurActiviteDto saa) {
+		SecteurActivite secteurActivite = secteurActiviteService.updateSecteurActivite(secteurActiviteConverter.convertDtoToEntity(saa));
+		return secteurActiviteConverter.convertEntityToDto(secteurActivite);
 	}
 
 	
