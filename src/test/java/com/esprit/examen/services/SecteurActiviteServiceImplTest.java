@@ -20,11 +20,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.SecteurActivite;
 import com.esprit.examen.repositories.SecteurActiviteRepository;
-@RunWith(SpringRunner.class)
-@SpringBootTest
-@ExtendWith(MockitoExtension.class)
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
+//@ExtendWith(MockitoExtension.class)
 public class SecteurActiviteServiceImplTest {
-	@Mock
+	/*@Mock
 	SecteurActiviteRepository SecteurRepository;
 	
 	@InjectMocks
@@ -38,7 +38,7 @@ public class SecteurActiviteServiceImplTest {
 	        }
 	     
 	    };
-	    /*
+	   
 	@Test
 	@Order(1)
 	public void testRetrieveSecteurActivite() {	
