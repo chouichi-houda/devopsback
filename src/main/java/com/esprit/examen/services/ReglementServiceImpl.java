@@ -11,6 +11,7 @@ import com.esprit.examen.repositories.FactureRepository;
 import com.esprit.examen.repositories.ReglementRepository;
 
 @Service
+@Slf4j
 public class ReglementServiceImpl implements IReglementService {
 
 	@Autowired
