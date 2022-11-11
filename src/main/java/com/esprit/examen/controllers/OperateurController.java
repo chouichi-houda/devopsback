@@ -20,6 +20,8 @@ public class OperateurController {
 
 	@Autowired
 	IOperateurService operateurService;
+	@Autowired
+   OperateurConverter operateurConverter;
 	
 	// http://localhost:8089/SpringMVC/operateur/retrieve-all-operateurs
 	@GetMapping("/retrieve-all-operateurs")
