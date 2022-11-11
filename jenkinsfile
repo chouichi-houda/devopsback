@@ -44,14 +44,16 @@ pipeline {
        		
        		
        		
-       		stage('Push image') {
-        withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
-      devopsproject_backend.push()
-        }
-    }   
-       
-        	
-    } 
-	  }
+       		
+       	stage('Push image') {
+ 			steps {
+ 			   
+ 			
+        	  sh "docker push rahmachaabane/devopsproject_backend"
+        	}
+        	}
+        	}
+     
+	    }
 	}
 
