@@ -45,14 +45,18 @@ pipeline {
        		
        		
        		
-       	stage('Push image') {
- 			steps {
- 			   
- 			
-        	  sh "docker push rahmachaabane/devopsproject_backend"
-        	}
-        	}
-        	
+        stage('Login Dockerhub') {
+
+			steps {
+			sh 'docker login -u rahmachaabane -p adminnn123'
+			}
+			}
+			 stage('Push image Backend to Dockerhub') {
+            steps {
+                sh 'docker push rahmachaabane/projetdevops-backend'
+                 
+            }
+        }
      
 	    }
 	}
