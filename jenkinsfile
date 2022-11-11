@@ -53,7 +53,7 @@ pipeline {
 			}
 			 stage('Push image Backend to Dockerhub') {
             steps {
-                sh 'docker push rahmachaabane/devopsproject-backend'
+                sh 'docker push rahmachaabane/devopsproject_backend'
                  
             }
         }
