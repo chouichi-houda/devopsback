@@ -42,9 +42,19 @@ pipeline {
        		}
        		}   
        		
+       		
+       		
+       		stage('Login') {
+
+			steps {
+
+                sh ' docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'                		
+	            echo 'Login Completed'  
+			}
+		}
        	stage('Push image') {
  			steps {
- 			    withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			   
  			
         	  sh "docker push rahmachaabane/devopsproject_backend"
         	}
