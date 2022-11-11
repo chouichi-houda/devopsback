@@ -34,7 +34,16 @@
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 
-
+<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>mysql</groupId>

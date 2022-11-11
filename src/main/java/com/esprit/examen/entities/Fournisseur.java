@@ -24,7 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-@Builder
+
 @NoArgsConstructor
 public class Fournisseur implements Serializable {
 
