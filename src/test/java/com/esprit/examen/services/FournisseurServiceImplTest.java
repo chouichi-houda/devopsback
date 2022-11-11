@@ -33,7 +33,7 @@ class FournisseurServiceImplTest {
 	
 	
 	@Test
-	public void addFournisseurTest() {
+	 void addFournisseurTest() {
     	when(fournisseurRepository.save(Fournisseur1)).thenReturn(Fournisseur1);
     	assertNotNull(Fournisseur1);
     	
@@ -44,7 +44,7 @@ class FournisseurServiceImplTest {
 	}
 	
 	 @Test 
-	    public void retrieveAllFournisseurTest() {
+	     void retrieveAllFournisseurTest() {
 	    	when(fournisseurRepository.findAll()).thenReturn(Stream
 	    			.of(Fournisseur1,Fournisseur2)
 	    			.collect(Collectors.toList()));
@@ -62,7 +62,7 @@ class FournisseurServiceImplTest {
 	    }*/
 
 	 @Test
-	    public void retrieveFournisseurTest() {
+	     void retrieveFournisseurTest() {
 	    	when(fournisseurRepository.findById(Fournisseur1.getIdFournisseur())).thenReturn(Optional.of(Fournisseur1));
 	    	assertEquals(Fournisseur1, fournisseurService.retrieveFournisseur(Fournisseur1.getIdFournisseur()));
 	    	System.out.println("Retrieve operator by id works !");
