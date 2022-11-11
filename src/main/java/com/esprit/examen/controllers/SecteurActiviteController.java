@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.esprit.examen.converter.ReglementConverter;
 import com.esprit.examen.converter.SecteurActiviteConverter;
 import com.esprit.examen.dto.SecteurActiviteDto;
 import com.esprit.examen.entities.SecteurActivite;
@@ -45,7 +44,7 @@ public class SecteurActiviteController {
 		return secteurActiviteConverter.convertEntityToDto(secteurActivite);
 	}
 
-	// http://localhost:8089/SpringMVC/secteurActivite/remove-secteurActivite/{secteurActivite-id}
+	
 	@DeleteMapping("/remove-secteurActivite/{secteurActivite-id}")
 	@ResponseBody
 	public void removeSecteurActivite(@PathVariable("secteurActivite-id") Long secteurActiviteId) {
