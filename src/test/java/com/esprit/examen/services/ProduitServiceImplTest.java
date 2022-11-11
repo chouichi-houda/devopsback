@@ -23,9 +23,7 @@ import com.esprit.examen.repositories.ProduitRepository;
 @ExtendWith(SpringExtension.class)
 class ProduitServiceImplTest {
 	
-	public ProduitServiceImplTest() {
-		// TODO Auto-generated constructor stub
-	} 
+
 	@InjectMocks
 	ProduitServiceImpl produitService;
 	
@@ -40,7 +38,7 @@ class ProduitServiceImplTest {
 	
 	
 	@Test 
-	public void addProductTest() {
+	void addProductTest() {
     	when(produitRepository.save(produit1)).thenReturn(produit1);
     	assertNotNull(produit1);
     	
@@ -51,7 +49,7 @@ class ProduitServiceImplTest {
 	} 
 	
 	 @Test 
-	    public void retrieveaallProductTest() {
+	 void retrieveaallProductTest() {
 	    	when(produitRepository.findAll()).thenReturn(Stream
 	    			.of(produit1,produit2)
 	    			.collect(Collectors.toList()));
@@ -61,7 +59,7 @@ class ProduitServiceImplTest {
 	    }
 	
 	   @Test 
-	    public void UpdateProductTest() {
+	   void UpdateProductTest() {
 	    	when(produitRepository.save(produit1)).thenReturn(produit1);
 	    	assertNotNull(produit1);
 	    	assertEquals(produit1, produitService.updateProduit(produit1));
@@ -69,7 +67,7 @@ class ProduitServiceImplTest {
 	    }
 	    
 	    @Test
-	    public void retrieveProductTest() {
+	    void retrieveProductTest() {
 	    	when(produitRepository.findById(produit1.getIdProduit())).thenReturn(Optional.of(produit1));
 	    	assertEquals(produit1, produitService.retrieveProduit(produit1.getIdProduit()));
 	    	System.out.println("Retrieve product by id works !");
