@@ -52,7 +52,7 @@ pipeline {
         	  sh "docker push rahmachaabane/devopsproject_backend"
         	}
         	}
-        	}
+        	
      
 	    }
 	}
