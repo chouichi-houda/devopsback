@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.esprit.converter.OperateurConverter;
+import com.esprit.dto.OperateurDto;
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.services.IOperateurService;
 
@@ -36,9 +39,9 @@ public class OperateurController {
 	// http://localhost:8089/SpringMVC/operateur/add-operateur
 	@PostMapping("/add-operateur")
 	@ResponseBody
-	public Operateur addOperateur(@RequestBody Operateur op) {
-		Operateur operateur = operateurService.addOperateur(op);
-		return operateur;
+	public OperateurDto addOperateur(@RequestBody OperateurDto op) {
+		Operateur operateur = operateurService.addOperateur(OperateurConverter.convertDtoToEntity(op));
+		return OperateurConverter.convertEntityToDto(OperateurConverter.convertDtoToEntity(op));
 	}
 
 	// http://localhost:8089/SpringMVC/operateur/remove-operateur/{operateur-id}
@@ -51,8 +54,9 @@ public class OperateurController {
 	// http://localhost:8089/SpringMVC/operateur/modify-operateur
 	@PutMapping("/modify-operateur")
 	@ResponseBody
-	public Operateur modifyOperateur(@RequestBody Operateur operateur) {
-		return operateurService.updateOperateur(operateur);
+	public OperateurDto modifyOperateur(@RequestBody OperateurDto op) {
+		Operateur operateur = operateurService.updateOperateur(OperateurConverter.convertDtoToEntity(op));
+		return OperateurConverter.convertEntityToDto(operateur);
 	}
 
 	

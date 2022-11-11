@@ -8,7 +8,7 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 
 public class OperateurConverter {
-	public OperateurDto  convertEntityToDto(Operateur operateur) {
+	public static OperateurDto  convertEntityToDto(Operateur operateur) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(operateur, OperateurDto.class);
         
@@ -21,9 +21,9 @@ public class OperateurConverter {
         return allProduitDto;
     }
 
-    public Operateur convertDtoToEntity(OperateurDto  produitDto) {
+    public static Operateur convertDtoToEntity(OperateurDto  op) {
         ModelMapper modelMapper = new ModelMapper();
-        return  modelMapper.map(produitDto, Operateur.class);
+        return  modelMapper.map(op, Operateur.class);
         
     }
 }
