@@ -15,9 +15,8 @@ import org.junit.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.esprit.examen.entities.Fournisseur;
@@ -31,13 +30,13 @@ public class FournisseurServiceImplTest {
 
 	
 	
-	@MockBean
+	@Mock
 	private FournisseurRepository FournisseurRepository;
 	private Fournisseur Fournisseur1 = new Fournisseur(1L,"test" ,"test2",null,null,null,null);
 	private Fournisseur Fournisseur2 = new Fournisseur(2L,"testt" ,"testtt2",null,null,null,null);
 	
-	@Autowired
-	IFournisseurService FourniseurService;
+	@InjectMocks
+	FournisseurServiceImpl FourniseurService;
 	
 	@Test
 	@Order(1)
