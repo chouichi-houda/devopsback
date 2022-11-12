@@ -12,12 +12,11 @@ public class StockConverter {
 	
 	public StockDto convertEntityToDto(Stock s) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(s, StockDto.class);
-        
+        return modelMapper.map(s, StockDto.class);   
     }
 	
 	public List<StockDto> convertEntitiesToDtos(List<Stock> stocks) {
-		List<StockDto> allStockDto = new ArrayList();
+		List<StockDto> allStockDto = new ArrayList<StockDto>();
 		for (Stock s :stocks ) {
 			allStockDto.add(convertEntityToDto(s));
 		}
@@ -28,7 +27,6 @@ public class StockConverter {
 	 public Stock convertDtoToEntity(StockDto stockDto) {
 	        ModelMapper modelMapper = new ModelMapper();
 	        return  modelMapper.map(stockDto, Stock.class);
-	        
 	    }
 
 

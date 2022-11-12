@@ -48,7 +48,9 @@ public class StockRestController {
 		Stock stock = stockService.addStock(stockConverter.convertDtoToEntity(s));
 		return stock;
 	}
-
+	
+	
+	
 	// http://localhost:8089/SpringMVC/stock/remove-stock/{stock-id}
 	@DeleteMapping("/remove-stock/{stock-id}")
 	@ResponseBody
