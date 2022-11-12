@@ -10,7 +10,7 @@ services:
         - "3307:3306"
       
       backend-container:
-       image: projet/achatprojet
+       image: chouichihouda/achatprojet
        container_name: tpachatback
        restart: on-failure
        ports:

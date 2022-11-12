@@ -50,9 +50,25 @@ pipeline {
             }
         }
         
-        stage("Building Docker Image") {
+        stage("Docker Image") {
                 steps{
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/achatprojet .'
+                }
+        }
+        
+        stage("signIn DockerHub") {
+                steps{
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                }
+        }
+        stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/achatprojet'
+                }
+        }
+        stage("Docker-compose") {
+                steps{
+                    sh 'docker-compose up -d'
                 }
         }
 
