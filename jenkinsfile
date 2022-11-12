@@ -42,12 +42,13 @@ pipeline {
             }
         }
         
-          stage('Build image') {
-           	steps {
-       		 sh "docker build -t rahmachaabane/devopss-backend ."
-       		}
-       		}   
-       		
+             stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"  
+                }
+            } 
+        }
        		
        		
        		
