@@ -44,7 +44,7 @@ stage('MVN SONARQUBE') {
         }
 	stage('Build image') {
            	steps {
-       		 sh "docker build -t chaimakaddour/devopss ."
+       		 sh "docker build -t chaimakaddour/devops ."
        		}
        		}   
    stage("login DockerHub") {
@@ -54,7 +54,7 @@ stage('MVN SONARQUBE') {
         }
         stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push chaimakaddour/devopss'
+                    sh 'docker push chaimakaddour/devops'
                 }
         }
 	 stage("Docker-compose") {
