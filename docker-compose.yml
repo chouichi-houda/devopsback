@@ -1,26 +1,34 @@
-version: "3.4"
-
+version: '3'
 services:
-  mysql-container4:
-    container_name: mysql-container4
-    ports:
-      - '3306:3306'
+  database:
+    image: mysql
+    container_name: mysql
     environment:
-      - MYSQL_DATABASE=1
-      - MYSQL_ALLOW_EMPTY_PASSWORD=1
-    restart: always
-    volumes:
-      - mysql-container4:/var/lib/mysql:rw
-    image: 'mysql:latest'
-  achat-backend:
-    depends_on:
-      - mysql-container4
-    container_name: devopss-backend
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpachato
     ports:
-      - '8089:8089'
+      - 3306:3306
+    networks:
+      - AppNet
+
+  spring-boot:
     image: rahmachaabane/devopss-backend
-    
-    
-    
-volumes:
-  mysql-container4: { }
+    container_name: spring
+    ports:
+      - 8089:8089
+    depends_on:
+      - database
+    networks:
+      - AppNet
+    restart: on-failure
+    environment:
+      SPRING_APPLICATION_JSON: '{
+              "spring.datasource.url"  : "jdbc:mysql://mysql:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false",
+              "spring.datasource.username" : "$MYSQLDB_USER",
+              "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+              "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+              "spring.jpa.hibernate.ddl-auto" : "update"
+            }'
+  
+networks:
+  AppNet:
