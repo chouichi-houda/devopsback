@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-///import com.esprit.examen.converter.StockConverter;
-//import com.esprit.examen.dto.StockDto;
+import com.esprit.examen.converter.StockConverter;
+import com.esprit.examen.dto.StockDto;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.services.IStockService;
 
@@ -23,8 +23,8 @@ public class StockRestController {
 	@Autowired
 	IStockService stockService;
 	
-	/*@Autowired
-    StockConverter stockConverter;*/
+	//@Autowired
+    StockConverter stockConverter;
 
 	// http://localhost:8089/SpringMVC/stock/retrieve-all-stocks
 	@GetMapping("/retrieve-all-stocks")
@@ -42,18 +42,18 @@ public class StockRestController {
 	}
 
 	// http://localhost:8089/SpringMVC/stock/add-stock
-	/*@PostMapping("/add-stock")
+	@PostMapping("/add-stock")
 	@ResponseBody
 	public Stock addStock(@RequestBody StockDto s) {
 		Stock stock = stockService.addStock(stockConverter.convertDtoToEntity(s));
 		return stock;
-	}*/
-	@PostMapping("/add-stock")
+	}
+	/*@PostMapping("/add-stock")
 	@ResponseBody
 	public Stock addStock(@RequestBody Stock s) {
 		Stock stock = stockService.addStock(s);
 		return stock;
-	}
+	}*/
 	
 	
 	
@@ -65,16 +65,16 @@ public class StockRestController {
 	}
 
 	// http://localhost:8089/SpringMVC/stock/modify-stock
-	/*@PutMapping("/modify-stock")
+	@PutMapping("/modify-stock")
 	@ResponseBody
 	public Stock modifyStock(@RequestBody StockDto s) {
 		return stockService.updateStock(stockConverter.convertDtoToEntity(s));
-	}*/
-	@PutMapping("/modify-stock")
+	}
+	/*@PutMapping("/modify-stock")
 	@ResponseBody
 	public Stock modifyStock(@RequestBody Stock s) {
 		return stockService.updateStock(s);
-	}
+	}*/
 
 	/*
 	 * Spring Scheduler : Comparer QteMin tolérée (à ne pa dépasser) avec
