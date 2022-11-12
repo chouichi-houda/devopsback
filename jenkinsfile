@@ -54,7 +54,7 @@ stage('MVN SONARQUBE') {
         }
         stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push chaimakaddour/devopss-backend .'
+                    sh 'docker push chaimakaddour/devopss-backend'
                 }
         }
     }
