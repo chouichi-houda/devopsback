@@ -1,11 +1,7 @@
 pipeline {
 	    agent any
 	    
-	    environment {
-        registry = "rahmachaabane/devops"
-        registryCredential = 'dockerHub'
-        dockerImage = ''
-    }
+	    
 	    stages{
 	        stage('Clone'){
 	             steps{  
@@ -51,21 +47,15 @@ pipeline {
        		
        		
        		
-        stage('Login Dockerhub') {
-
-			steps {
-			sh 'docker login -u rahmachaabane -p adminnn123'
-			}
-			}
-			stage('push image') {
-            steps {
-                script {
-                    docker.withRegistry( '', registryCredential ) {
-                        dockerImage.push()
-                    }
-                }
-            }
-        }
+       
+			  stage('Push image') {
+ 			steps {
+ 			    withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
+ 			
+        	  sh "docker push rahmachaabane/devops-backend"
+        	}
+        	}
+        	}
      
 	    }
 	}
