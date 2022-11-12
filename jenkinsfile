@@ -57,5 +57,10 @@ stage('MVN SONARQUBE') {
                     sh 'docker push chaimakaddour/devopss-backend'
                 }
         }
+	 stage("Docker-compose") {
+                steps{
+                    sh 'docker-compose up -d'
+                }
+        }
     }
 }
