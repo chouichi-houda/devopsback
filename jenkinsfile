@@ -58,7 +58,11 @@ pipeline {
                     sh 'docker push rahmachaabane/devopss-backend'
                 }
         }	
-       		
+       		   stage("Docker-compose") {
+                steps{
+                    sh 'docker-compose up -d'
+                }
+        }
        
 		
 	    }
