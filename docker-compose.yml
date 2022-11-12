@@ -15,10 +15,10 @@ services:
   achat-backend:
     depends_on:
       - mysql-container4
-    container_name: devops-backend
+    container_name: devopss-backend
     ports:
       - '8089:8089'
-    image: rahmachaabane/devops-backend
+    image: rahmachaabane/devopss-backend
     
     
     
