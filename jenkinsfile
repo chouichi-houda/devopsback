@@ -57,10 +57,13 @@ pipeline {
 			sh 'docker login -u rahmachaabane -p adminnn123'
 			}
 			}
-			 stage('Push image Backend to Dockerhub') {
+			stage('push image') {
             steps {
-                sh 'docker push rahmachaabane/devops-backend'
-                 
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                        dockerImage.push()
+                    }
+                }
             }
         }
      
