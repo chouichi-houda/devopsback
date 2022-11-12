@@ -48,21 +48,19 @@ pipeline {
        		}   
        		
        		
-       		
-       		
-       
-		stage("Login to DockerHub") {
+       	stage("login DockerHub") {
                 steps{
-                   // sh 'sudo chmod 666 /var/run/docker.sock'
-                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                    sh 'echo adminnn123 | docker login -u rahmachaabane -p adminnn123'
                 }
         }
         stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/devopss-backend'
+                    sh 'docker push rahmachaabane/devopss-backend'
                 }
-        }
-     
+        }	
+       		
+       
+		
 	    }
 	}
 
