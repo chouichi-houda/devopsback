@@ -1,5 +1,5 @@
 FROM openjdk:8-jdk-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} tpAchatProject-1.0.jar
-ENTRYPOINT ["java","-jar","/tpAchatProject-1.0.jar"]
+RUN apk --no-cache add curl
+RUN curl -u admin:nexus -o tpAchatProject-1.0.jar "http://192.168.1.8:8081/repository/maven-releases/com/esprit/examen/tpAchatProject/1.0/tpAchatProject-1.0.jar" -L
+ENTRYPOINT java -jar /tpAchatProject-1.0.jar
 EXPOSE 8089

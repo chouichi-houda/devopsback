@@ -50,13 +50,13 @@ pipeline {
             }
         }
         
-        stage("Docker Image") {
+        stage("build Docker Image") {
                 steps{
                     sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/achatprojett .'
                 }
         }
         
-        stage("signIn DockerHub") {
+        stage("DockerHub login") {
                 steps{
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
                 }
