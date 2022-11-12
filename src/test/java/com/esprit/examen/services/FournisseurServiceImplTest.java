@@ -67,4 +67,8 @@ class FournisseurServiceImplTest {
 	    	assertEquals(Fournisseur1, fournisseurService.retrieveFournisseur(Fournisseur1.getIdFournisseur()));
 	    	System.out.println("Retrieve operator by id works !");
 	    }
+	 
+	 
+	 
+	 
 }
