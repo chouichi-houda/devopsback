@@ -47,6 +47,15 @@ stage('MVN SONARQUBE') {
        		 sh "docker build -t chaimakaddour/devopss-backend ."
        		}
        		}   
-
+   stage("login DockerHub") {
+                steps{
+                    sh 'echo 203JFT1665 | docker login -u chaimakaddour -p 203JFT1665'
+                }
+        }
+        stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push chaimakaddour/devopss-backend .'
+                }
+        }
     }
 }
