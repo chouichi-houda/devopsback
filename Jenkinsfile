@@ -52,7 +52,7 @@ pipeline {
         
         stage("Docker Image") {
                 steps{
-                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/achatprojet .'
+                    sh 'docker build -t $DOCKERHUB_CREDENTIALS_USR/achatprojett .'
                 }
         }
         
@@ -63,7 +63,7 @@ pipeline {
         }
         stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/achatprojet'
+                    sh 'docker push $DOCKERHUB_CREDENTIALS_USR/achatprojett'
                 }
         }
         stage("Docker-compose") {
