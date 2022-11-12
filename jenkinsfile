@@ -1,5 +1,11 @@
 pipeline {
 	    agent any
+	    
+	    environment {
+        registry = "rahmachaabane/devops"
+        registryCredential = 'dockerHub'
+        dockerImage = ''
+    }
 	    stages{
 	        stage('Clone'){
 	             steps{  
