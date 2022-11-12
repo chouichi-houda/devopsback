@@ -23,7 +23,7 @@ public class StockRestController {
 	@Autowired
 	IStockService stockService;
 	
-	//@Autowired
+	
     StockConverter stockConverter;
 
 	// http://localhost:8089/SpringMVC/stock/retrieve-all-stocks
