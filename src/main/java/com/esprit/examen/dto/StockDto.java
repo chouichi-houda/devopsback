@@ -1,4 +1,4 @@
-package com.esprit.examen.dto;
+/*package com.esprit.examen.dto;
 
 import java.util.Set;
 
@@ -17,3 +17,4 @@ public class StockDto {
 	private Set<Produit> produits;
 
 }
+*/

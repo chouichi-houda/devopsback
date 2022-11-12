@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.esprit.examen.converter.StockConverter;
-import com.esprit.examen.dto.StockDto;
+///import com.esprit.examen.converter.StockConverter;
+//import com.esprit.examen.dto.StockDto;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.services.IStockService;
 

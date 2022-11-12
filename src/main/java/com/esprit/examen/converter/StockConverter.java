@@ -1,6 +1,6 @@
-package com.esprit.examen.converter;
+/*package com.esprit.examen.converter;
 
-import com.esprit.examen.dto.StockDto;
+/*import com.esprit.examen.dto.StockDto;
 import com.esprit.examen.entities.Stock;
 
 import java.util.ArrayList;
@@ -29,5 +29,5 @@ public class StockConverter {
 	        return  modelMapper.map(stockDto, Stock.class);
 	    }
 
-
 }
+*/
