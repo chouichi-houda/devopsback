@@ -40,7 +40,7 @@ pipeline {
         
           stage('Build image') {
            	steps {
-       		 sh "docker build -t rahmachaabane/devops-backend ."
+       		 sh "docker build -t rahmachaabane/devopss-backend ."
        		}
        		}   
        		
@@ -52,7 +52,7 @@ pipeline {
  			steps {
  			    withDockerRegistry([ credentialsId: "dockerHub", url: "" ]) {
  			
-        	  sh "docker push rahmachaabane/devops-backend"
+        	  sh "docker push rahmachaabane/devopss-backend"
         	}
         	}
         	}
