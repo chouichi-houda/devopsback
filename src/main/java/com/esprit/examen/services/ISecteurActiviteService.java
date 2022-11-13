@@ -2,6 +2,7 @@ package com.esprit.examen.services;
 
 import java.util.List;
 
+import com.esprit.examen.dto.SecteurActiviteDTO;
 import com.esprit.examen.entities.SecteurActivite;
 
 public interface ISecteurActiviteService {
@@ -15,5 +16,8 @@ public interface ISecteurActiviteService {
 	SecteurActivite updateSecteurActivite(SecteurActivite sa);
 
 	SecteurActivite retrieveSecteurActivite(Long id);
+
+
+	SecteurActiviteDTO saveSecteurActivite(SecteurActiviteDTO secteurActivitedto);
 
 }

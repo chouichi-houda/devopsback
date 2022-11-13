@@ -34,8 +34,8 @@ import com.esprit.examen.repositories.ReglementRepository;
 public class ReglementServiceImplTest {
 	SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-	private Reglement reglement1 = new Reglement((long) 1, 21F, 10F, null, null, null);
-	private Reglement reglement2 = new Reglement((long) 2, 21F, 10F, null, null, null);
+	private Reglement reglement1 = new Reglement((long) 1, 10F, 10F, null, null, null);
+	private Reglement reglement2 = new Reglement((long) 2, 10F, 10F, null, null, null);
 	@Mock
 	private ReglementRepository reglementrepository;
 	@InjectMocks
@@ -44,7 +44,7 @@ public class ReglementServiceImplTest {
 	@Test
 	@Order(1)
 	public void addReglement() throws ParseException {
-		Date dateReglement = dateFormat.parse("30/09/2000");
+		Date dateReglement = dateFormat.parse("19/09/2001");
 		reglement1.setDateReglement(dateReglement);
 		//
 		when(reglementrepository.save(reglement1)).thenReturn(reglement1);
@@ -52,8 +52,7 @@ public class ReglementServiceImplTest {
 
 		Reglement persisted = reglementService.addReglement(reglement1);
 		assertEquals(reglement1, persisted);
-
-		System.out.println("AddReglement works !");
+		System.out.println("AddReglement");
 	}
 
 	@Test
@@ -61,7 +60,7 @@ public class ReglementServiceImplTest {
 	public void retrieveReglement() {
 		when(reglementrepository.findById(reglement1.getIdReglement())).thenReturn(Optional.of(reglement1));
 		assertEquals(reglement1, reglementService.retrieveReglement(reglement1.getIdReglement()));
-		System.out.println("retrieveReglement works !");
+		System.out.println("retrieveReglement");
 	}
 
 	@Test
@@ -69,7 +68,7 @@ public class ReglementServiceImplTest {
 	public void retrieveAllReglements() {
 		when(reglementrepository.findAll()).thenReturn(Stream.of(reglement1, reglement2).collect(Collectors.toList()));
 		assertEquals(2, reglementService.retrieveAllReglements().size());
-		System.out.println("retrieveAllReglements works !");
+		System.out.println("retrieveAllReglements");
 	}
 
 }
