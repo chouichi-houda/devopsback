@@ -23,13 +23,7 @@
 		</sonar.jacoco.reportPath>
 		<sonar.language>java</sonar.language>
 	</properties>
-	<distributionManagement>
-		<repository>
-			<id>deploymentRepo</id>
-			<name>admin</name>
-			<url>http://192.168.1.16:8081/repository/maven-releases</url>
-		</repository>
-	</distributionManagement>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -94,6 +88,13 @@
 			<version>2.4.5</version>
 		</dependency>
 	</dependencies>
+	<distributionManagement>
+		<repository>
+			<id>deploymentRepo</id>
+			<name>admin</name>
+			<url>http://192.168.1.16:8081/repository/maven-releases</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
