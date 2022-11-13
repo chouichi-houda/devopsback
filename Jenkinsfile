@@ -34,7 +34,7 @@ pipeline {
 
        stage('Nexus'){
             steps{
-                sh 'mvn deploy -DrepositoryId=deploymentRepo -DskipStaging=true'
+                sh 'mvn deploy'
             }
        }
     }
