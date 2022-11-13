@@ -36,6 +36,25 @@ pipeline {
                 sh 'mvn deploy -DskipStaging=true'
             }
         }
-       
+       stage('Build image') {
+           	steps {
+       		 sh "docker build -t hamzatouam/devops1 ."
+       		}
+       		}   
+   stage("login DockerHub") {
+                steps{
+                    sh 'echo 203JFT1665 | docker login -u chaimakaddour -p 203JFT1665'
+                }
+        }
+        stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push hamzatouam/devops1'
+                }
+        }
+	 stage("Docker-compose") {
+                steps{
+                    sh 'docker compose up -d'
+                }
+        }
     }
 }
