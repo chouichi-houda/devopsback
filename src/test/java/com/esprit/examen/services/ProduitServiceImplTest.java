@@ -33,6 +33,7 @@ class ProduitServiceImplTest {
 	@InjectMocks
 	StockServiceImpl stockService;
 	
+	
 	DateFormat df = new SimpleDateFormat("MM-dd-yyyy"); 
     @Mock
     private ProduitRepository produitRepository;
