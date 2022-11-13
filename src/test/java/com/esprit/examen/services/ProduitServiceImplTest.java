@@ -34,7 +34,6 @@ class ProduitServiceImplTest {
 	StockServiceImpl stockService;
 	
 	DateFormat df = new SimpleDateFormat("MM-dd-yyyy"); 
-	
     @Mock
     private ProduitRepository produitRepository;
     private StockRepository stockRepository;
