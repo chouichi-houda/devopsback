@@ -20,7 +20,7 @@ public class OperateurController {
 
 	@Autowired
 	IOperateurService operateurService;
-	@Autowired(required="false")
+	@Autowired(required=false)
    OperateurConverter operateurConverter;
 	
 	// http://localhost:8089/SpringMVC/operateur/retrieve-all-operateurs
