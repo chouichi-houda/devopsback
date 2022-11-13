@@ -21,7 +21,7 @@ public class SecteurActiviteServiceImpl implements ISecteurActiviteService{
 	
 	@Autowired
     ModelMapper modelMapper;
-	@Autowired(required = false)
+	@Autowired
     SecteurActiviteConverter secteurActiviteConverter;
     
     @Override
