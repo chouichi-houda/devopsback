@@ -38,7 +38,7 @@ pipeline {
         }
        stage('Build image') {
            	steps {
-       		 sh "docker build -t hamzatouam/dev ."
+       		 sh "docker build -t hamzatouam/devp ."
        		}
        		}   
    stage("login DockerHub") {
@@ -48,7 +48,7 @@ pipeline {
         }
         stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push hamzatouam/dev'
+                    sh 'docker push hamzatouam/devp'
                 }
         }
 	 stage("Docker-compose") {
