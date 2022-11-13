@@ -51,11 +51,7 @@ pipeline {
                     sh 'docker push hamzatouam/devp'
                 }
         }
-	    stage('Cleaning up') { 
-             steps { 
-                 sh "docker rmi $registry:latest" 
-             }
-         }
+	    
 
 	 stage("Docker-compose") {
                 steps{
