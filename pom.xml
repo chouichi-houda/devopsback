@@ -90,7 +90,7 @@
 	</dependencies>
 	<distributionManagement>
 		<repository>
-			<repositoryId>deploymentRepo</repositoryId>
+			<id>deploymentRepo</id>
 			<name>admin</name>
 			<url>http://192.168.1.16:8081/repository/maven-releases</url>
 		</repository>
