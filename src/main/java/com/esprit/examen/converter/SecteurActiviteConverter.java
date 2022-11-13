@@ -4,6 +4,8 @@ import org.modelmapper.ModelMapper;
 
 import com.esprit.examen.dto.SecteurActiviteDTO;
 import com.esprit.examen.entities.SecteurActivite;
+
+import org.springframework.stereotype.Component;
 @Component
 public class SecteurActiviteConverter {
 	public SecteurActiviteDTO convertEntityToDto(SecteurActivite secteurActivite) {
