@@ -15,7 +15,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: chaimakaddour/devops
+    image: chaimakaddour/devopsproject
     restart: on-failure
     env_file: ./.env
     ports:
