@@ -24,7 +24,7 @@ services:
   app:
     depends_on:
       - mysqldb
-    image: hamzatouam/devopss
+    image: hamzatouam/dev
     restart: on-failure
     env_file: ./.env
     ports:
