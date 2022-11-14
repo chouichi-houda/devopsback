@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.CategorieProduit;
 import com.esprit.examen.repositories.CategorieProduitRepository;
+import com.esprit.examen.TpAchatProjectApplication;
 
 @SpringBootTest(classes = TpAchatProjectApplication.class)
 @RunWith(MockitoJUnitRunner.class)
