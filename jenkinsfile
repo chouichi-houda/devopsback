@@ -2,7 +2,7 @@ pipeline {
 	    agent any
 	    
 	        environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerHub')
+                     DOCKERHUB_CREDENTIALS = credentials('dockerHub')
     }
 	    stages{
 	        stage('Clone'){
@@ -35,13 +35,13 @@ pipeline {
         }
         
         
-	     stage("Docker-compose") {
-                steps{
-                    sh 'docker-compose up -d'
-                }
-        }
-		
 	   
+		
+	       stage('Nexus'){
+            steps{
+                sh 'mvn deploy'
+            }
+        }
         
           stage('Build image') {
            	steps {
@@ -60,13 +60,11 @@ pipeline {
                     sh 'docker push $DOCKERHUB_CREDENTIALS_USR/projetdevops-backend'
                 }
         }
-        
-          stage('Nexus'){
-            steps{
-                sh 'mvn deploy'
-            }
+       		   stage("Docker-compose") {
+                steps{
+                    sh 'docker-compose up -d'
+                }
         }
-       		 
        
 		
 	    }
