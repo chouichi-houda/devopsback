@@ -47,7 +47,7 @@ pipeline {
 
         stage("login DockerHub") {
                 steps{
-                    sh 'echo docker | docker login -u soltaniamal -p docker'
+                    sh 'echo dockerhub | docker login -u soltaniamal -p dockerhub'
                 }
         }
         stage("Push to DockerHub") {
