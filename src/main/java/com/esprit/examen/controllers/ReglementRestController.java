@@ -23,7 +23,7 @@ public class ReglementRestController {
     @Autowired
     IReglementService reglementService;
     //
-    @Autowired
+   // @Autowired
     private ReglementConverter reglementConverter;
 
 
