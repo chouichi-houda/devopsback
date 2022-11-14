@@ -31,15 +31,7 @@ pipeline {
             }
         }
         
-        stage('clean and package') {
-            
-            steps {
-                sh 'mvn clean package'  
-            }
-     
-            } 
-
-
+        
        stage('Nexus'){
             steps{
                 sh 'mvn deploy'
