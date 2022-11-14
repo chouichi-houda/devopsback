@@ -21,7 +21,7 @@ public class SecteurActiviteController {
 	@Autowired
 	ISecteurActiviteService secteurActiviteService;
 
-	@Autowired
+	//@Autowired
     private SecteurActiviteConverter secteurActiviteConverter;
 	
 	// http://localhost:8089/SpringMVC/secteurActivite/retrieve-all-secteurActivite
