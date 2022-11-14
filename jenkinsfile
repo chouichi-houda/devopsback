@@ -2,9 +2,7 @@ pipeline {
 	    agent any
 	    
 	        environment {
-         registry = "rahmachaabane/projetdevops-backend"
-        registryCredential = 'dockerHub'
-        dockerImage = ''
+        DOCKERHUB_CREDENTIALS = credentials('dockerHub')
     }
 	    stages{
 	        stage('Clone'){
