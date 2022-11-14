@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.StockRepository;
 
-@SpringBootTest(classes = tpAchatProjectApplication.class)
+@SpringBootTest(classes = tpAchatProject.class)
 @RunWith(MockitoJUnitRunner.class)
 public class StockServiceImplTest {
 
