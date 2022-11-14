@@ -15,14 +15,14 @@ pipeline {
 
         stage('MVN COMPILE') {
             steps{
-                 sh 'mvn compile -e'   
+                 sh 'mvn compile'   
              }
         }
 
          stage('Mvn Junit') {
             steps{
-                 echo 'mvn test -Dtest=CategorieProduitImplTest'
-                 echo 'mvn test -Dtest=StockImplTest'
+                 echo 'mvn test '
+   
             }
         }
         
