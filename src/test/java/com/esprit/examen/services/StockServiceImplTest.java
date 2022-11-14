@@ -14,7 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import com.esprit.examen.TpAchatProjectApplication;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.StockRepository;
 
