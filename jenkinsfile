@@ -35,13 +35,13 @@ pipeline {
         }
         
         
-	   
-		
-	       stage('Nexus'){
-            steps{
-                sh 'mvn deploy'
-            }
+	     stage("Docker-compose") {
+                steps{
+                    sh 'docker-compose up -d'
+                }
         }
+		
+	   
         
           stage('Build image') {
            	steps {
@@ -60,11 +60,13 @@ pipeline {
                     sh 'docker push $DOCKERHUB_CREDENTIALS_USR/projetdevops-backend'
                 }
         }
-       		   stage("Docker-compose") {
-                steps{
-                    sh 'docker-compose up -d'
-                }
+        
+          stage('Nexus'){
+            steps{
+                sh 'mvn deploy'
+            }
         }
+       		 
        
 		
 	    }
