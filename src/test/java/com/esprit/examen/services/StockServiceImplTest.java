@@ -1,29 +1,25 @@
 package com.esprit.examen.services;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.StockRepository;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
-@ExtendWith(MockitoExtension.class)
+@RunWith(MockitoJUnitRunner.class)
 public class StockServiceImplTest {
 
 	@Mock
@@ -60,13 +56,6 @@ public class StockServiceImplTest {
 		System.out.println("added !");
 	}
 	
-	@Test
-	public void testdeleteStock() {
-		Stock stock1 = new Stock(Long.valueOf(4), "f5", 50, 15, null);
-		stockService.deleteStock(stock1.getIdStock());
-		Mockito.verify(stockRepository).deleteById(stock1.getIdStock());
-		System.out.println("deleted");
-	}
 	
 	@Test
 	public void testUpdateStock() {
@@ -85,6 +74,15 @@ public class StockServiceImplTest {
 		Assertions.assertNotNull(stock1);
 		System.out.println("Retrieved !");
 	}
+	
+	@Test
+	public void testdeleteStock() {
+		Stock stock1 = new Stock(Long.valueOf(4), "f5", 50, 15, null);
+		stockService.deleteStock(stock1.getIdStock());
+		Mockito.verify(stockRepository).deleteById(stock1.getIdStock());
+		System.out.println("deleted");
+	}
+	
 	
 
 }

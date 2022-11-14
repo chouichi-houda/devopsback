@@ -26,18 +26,29 @@ pipeline {
             }
         }
         
-        stage(' SONARQUBE') {
+         stage(' SONARQUBE') {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'   
             }
         }
         
         
-       stage(' Nexus') {
-            steps {
-               sh 'mvn deploy -DskipStaging=true'
-            }		
-       }
+        stage('Build image') {
+           	steps {
+       		 sh "docker build -t soltaniamal/tpachat ."
+       	        }
+       	}    
+
+        stage("login DockerHub") {
+                steps{
+                    sh 'echo docker | docker login -u soltaniamal -p docker'
+                }
+        }
+        stage("Push to DockerHub") {
+                steps{
+                    sh 'docker push soltaniamal/tpachat'
+                }
+        }
        
     }
 }
