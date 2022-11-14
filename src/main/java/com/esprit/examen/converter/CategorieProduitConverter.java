@@ -1,10 +1,11 @@
 package com.esprit.examen.converter;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.esprit.examen.dto.CategorieProduitDto;
 import com.esprit.examen.entities.CategorieProduit;
-
+@Component
 public class CategorieProduitConverter {
 	
 	public CategorieProduitDto convertEntityToDto(CategorieProduit categorieProduit) {

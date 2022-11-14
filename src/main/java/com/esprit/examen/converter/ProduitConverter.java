@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
 import com.esprit.examen.dto.ProduitDto;
 import com.esprit.examen.entities.Produit;
-
+@Component
 public class ProduitConverter {
 
 	public ProduitDto convertEntityToDto(Produit produit) {
