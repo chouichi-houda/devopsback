@@ -21,8 +21,8 @@ pipeline {
 
          stage('Mvn Junit') {
             steps{
-                 echo 'MVN test -Dtest=CategorieProduitImplTest'
-                 echo 'MVN test -Dtest=StockImplTest'
+                 echo 'mvn test -Dtest=CategorieProduitImplTest'
+                 echo 'mvn test -Dtest=StockImplTest'
             }
         }
         
