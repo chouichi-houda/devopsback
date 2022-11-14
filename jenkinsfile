@@ -46,7 +46,7 @@ pipeline {
         
           stage('Build image') {
            	steps {
-       		 sh "docker build -t rahmachaabane/devopsprojet-backend ."
+       		 sh "docker build -t rahmachaabane/projetdevops-backend ."
        		}
        		}   
        		
@@ -58,7 +58,7 @@ pipeline {
         }
         stage("Push to DockerHub") {
                 steps{
-                    sh 'docker push rahmachaabane/devopsprojet-backend'
+                    sh 'docker push rahmachaabane/projetdevops-backend'
                 }
         }	
        		   stage("Docker-compose") {
