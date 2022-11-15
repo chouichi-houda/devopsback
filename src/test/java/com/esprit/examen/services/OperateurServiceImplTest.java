@@ -27,8 +27,7 @@ public class OperateurServiceImplTest {
 	private Operateur operateur1 = new Operateur(1L,"test1","tes1","546125",null);
 	private Operateur operateur2 = new Operateur(2L,"test2","test2","546125",null);
 
-	@Autowired
-	IOperateurService operateurService;
+	
 	@InjectMocks
 	OperateurServiceImpl operateurService;
 	
