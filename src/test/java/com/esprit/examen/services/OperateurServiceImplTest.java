@@ -27,6 +27,8 @@ public class OperateurServiceImplTest {
 
 	@Autowired
 	IOperateurService operateurService;
+	@InjectMocks
+	OperateurServiceImpl operateurService;
 	
 	  @Test
 		public void addOperateurTest() {
