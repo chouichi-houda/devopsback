@@ -37,6 +37,7 @@ class ProduitServiceImplTest {
 	DateFormat df = new SimpleDateFormat("MM-dd-yyyy"); 
     @Mock
     private ProduitRepository produitRepository;
+    @Mock
     private StockRepository stockRepository;
     
     private Produit produit1 = new Produit(null,"777434","libbPorduit", 10, new Date(), new Date(),null,null,null);
@@ -89,15 +90,17 @@ class ProduitServiceImplTest {
 	    	System.out.println("Retrieve product by id works !");
 	    }
 	    
-//	    @Test 
-//		   void testAssignProduitToStock() {
-//	    	when(produitRepository.findById(produit1.getIdProduit())).thenReturn(Optional.of(produit1));
-//	    	assertEquals(produit1, produitService.retrieveProduit(produit1.getIdProduit()));
-//	    	when(stockRepository.findById(stock.getIdStock())).thenReturn(stock);
-//			  assertNotNull(produit1);
-//			  ((ProduitServiceImpl) Mockito.verify(produitRepository)).assignProduitToStock(produit1.getIdProduit(),stock.getIdStock());
-//			  System.out.println("deleted");
-//		    }
+	    @Test 
+		   void testAssignProduitToStock() {
+	    	when(produitRepository.findById(produit1.getIdProduit())).thenReturn(Optional.of(produit1));
+	    	assertEquals(produit1, produitService.retrieveProduit(produit1.getIdProduit()));
+	    	when(stockRepository.findById(stock.getIdStock())).thenReturn(Optional.of(stock));
+	    	assertEquals(stock, stockService.retrieveStock(stock.getIdStock()));
+	    	when(produitRepository.save(produit1)).thenReturn(produit1);
+	    	assertNotNull(produit1);
+			assertEquals(produit1,produitService.addProduit(produit1));
+			  System.out.println("Assign");
+		    }
 	  
 
     
