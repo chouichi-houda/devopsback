@@ -12,6 +12,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.InjectMocks;
+
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.esprit.examen.entities.Operateur;
@@ -27,7 +29,8 @@ public class OperateurServiceImplTest {
 
 	@Autowired
 	IOperateurService operateurService;
-	
+	@InjectMocks
+	OperateurServiceImpl operateurService;
 	
 	  @Test
 		public void addOperateurTest() {
